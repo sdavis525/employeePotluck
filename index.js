@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
 const db = require("./db/connection");
 const express = require('express');
-const changeUser  = require('./db/connection');
+const { switchUser }   = require('./db/connection');
+
 
 require("console.table");
 
@@ -11,12 +12,12 @@ require("console.table");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// Express middleware
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-// require("console.table");
 
-const mainMenu = () => {
+
+const promptMain = () => {
     inquirer
         .prompt([
             {
@@ -29,37 +30,35 @@ const mainMenu = () => {
                         name: "View All Employees",
                         value: "VIEW_EMPLOYEES"
                     },
-                    // View Employees
-                    // View Departments
+                  
                     {
                         name: "View All Departments",
                         value: "VIEW_DEPARTMENTS"
                     },
-                    // ViewRoles
+             
                     {
                         name: "View Roles",
                         value: "VIEW_ROLES"
 
                     },
 
-                    // ADD Emplyees
+               
                     {
                         name: "Add Employees",
                         value: "ADD_EMPLOYEES"
 
                     },
-                    // ADD ROLE
+               
                     {
                         name: "Add Role",
                         value: "ADD_ROLE"
 
                     },
-                    // ADD Department
+               
                     {
                         name: "Add Department",
                         value: "ADD_DEPARTMENT"
                     },
-                    // Update and employee role
 
                     {
                         name: "Update and employee role",
@@ -79,8 +78,7 @@ const mainMenu = () => {
 
 
         ]).then(res => {
-            // now we call the appropriate function depending on what the user chooses
-            // if or switch
+           
             switch (res.choice) {
                 case "VIEW_EMPLOYEES":
               
@@ -121,7 +119,7 @@ const mainMenu = () => {
                     break;
 
                 default:
-                    console.log("yo")
+                    console.log("hi")
                     console.log(res.choice)
                     break;
             }
@@ -131,7 +129,7 @@ const mainMenu = () => {
 }
 
 
-mainMenu();
+promptMain();
 
 // conditional statment here call corresonding function
 // async function viewEmployees() 
@@ -142,7 +140,7 @@ function viewEmployees() {
     db.query(sql, function (err, results) {
         // console.table(results);
         console.table(results)
-        mainMenu();
+        promptMain();
 
     });
 
@@ -156,7 +154,7 @@ function ViewDepartments() {
 
     db.query(sql, function (err, results) {
         console.table(results)
-        mainMenu();
+        promptMain();
     })
 
 
@@ -171,7 +169,7 @@ function ViewRoles() {
     db.query(sql, function (err, results) {
 
         console.table(results)
-        mainMenu();
+        promptMain();
     })
 
 };
@@ -229,7 +227,7 @@ const addEmployee = () => {
             db.query(sql, params, (err, result) => {
 
                 console.log(results);
-                mainMenu();
+                    promptMain();
             })
         });
 }
@@ -269,7 +267,7 @@ const addDepartment = () => {
             db.query(sql, params, (err, result) => {
 
                 console.log(results);
-                mainMenu();
+                promptMain();
             })
         });
 }
@@ -317,7 +315,7 @@ const addRole = () => {
             db.query(sql, params, (err, result) => {
 
                 console.log(params);
-                mainMenu();
+                promptMain();
             })
         });
 }
@@ -398,7 +396,7 @@ const updateRole = () => {
 
                                 console.log('Updated employees role')
 
-                                mainMenu();
+                                promptMain();
                             });
 
                         });
