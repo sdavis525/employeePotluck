@@ -36,6 +36,20 @@ WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 ```
 
+
+
+## demo
+
+```sh
+
+
+https://user-images.githubusercontent.com/98237529/167669664-4f4bedc9-1618-41a0-bf60-3dcb9c68530f.mp4
+
+
+
+
+```
+
 ## Install
 
 ```sh
