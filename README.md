@@ -37,18 +37,15 @@ THEN I am prompted to select an employee to update and their new role and this i
 ```
 
 
-
-## demo
-
-```sh
-
-
-https://user-images.githubusercontent.com/98237529/167669664-4f4bedc9-1618-41a0-bf60-3dcb9c68530f.mp4
+## Demo 
 
 
 
 
-```
+https://user-images.githubusercontent.com/98237529/167669909-c545b3fb-6cd3-4029-83bc-b7bb186d8555.mp4
+
+
+
 
 ## Install
 
